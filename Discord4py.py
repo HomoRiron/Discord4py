@@ -66,6 +66,6 @@ email? string
         header = {
             "Authorization":self.Token
         }
-        r=requests.get(f"{self.base}/channels/{channelid}/invites")
+        r=requests.get(f"{self.base}/channels/{channelid}/invites",headers=header)
         json = r.json()
         return json
