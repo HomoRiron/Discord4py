@@ -1,6 +1,7 @@
 import requests
 
 
+
 class DiscordApi:
     def __init__(self,Email=None,Password=None,Token=None):
         self.base = "https://discordapp.com/api/v6"
@@ -52,4 +53,12 @@ email? string
         }
         r=requests.get(f"{self.base}/users/@me",headers=header)
         return r.json()
-        
+    def EditMessage(self,channelid,msgid,text):
+        header = {
+            "Authorization":self.Token
+        }
+        json = {
+            "content":text
+        }
+        r=requests.patch(f"{self.base}/channels/{channelid}/messages/{msgid}",headers=header,json=json)
+        return r.status_code
