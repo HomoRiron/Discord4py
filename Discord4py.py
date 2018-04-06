@@ -37,5 +37,5 @@ class DiscordApi:
         json={
 
         }
-        r=requests.delete(f"{self.base}/channels/{channel_id}/messages/{message_id}",headers=header)
+        requests.delete(f"{self.base}/channels/{channel_id}/messages/{message_id}",headers=header)
         
