@@ -7,20 +7,20 @@ class DiscordApi:
         if(Token):
             self.Token = Token
         else:
-            self.LoginUrl=f"{self.base}/auth/login"
-            self.JsonData = {
+            login = "{self.base}/auth/login"
+            json = {
                 "email":Email,
                 "password":Password
                 }
-            self.Response=requests.post(json=self.JsonData,url=self.LoginUrl)
-            self.ResponseJson = self.Response.json()
-            if ("captcha_key" in self.ResponseJson):
+            response = requests.post(json=json,url=login)
+            json = response.json()
+            if ("captcha_key" in json):
                 print("captcha_key")
                 exit()
-            if ("password" in self.ResponseJson):
+            if ("password" in json):
                 print("Password does not match.")
                 exit()
-            self.Token = self.ResponseJson["token"]
+            self.Token = json["token"]
     def SendMessage(self,channel_id,text):
         json = {
             "content":text,
