@@ -34,8 +34,22 @@ class DiscordApi:
         header ={
             "Authorization":self.Token
         }
-        json={
-
+        r=requests.delete(f"{self.base}/channels/{channel_id}/messages/{message_id}",headers=header)
+        return r.status_code
+    def Me(self):
+        """
+id snowflake
+username string
+discriminator string
+avatar ?string
+bot? bool
+mfa_enabled? bool
+verified? bool
+email? string
+"""
+        header = {
+            "Authorization":self.Token
         }
-        requests.delete(f"{self.base}/channels/{channel_id}/messages/{message_id}",headers=header)
+        r=requests.get(f"{self.base}/users/@me",headers=header)
+        return r.json()
         
