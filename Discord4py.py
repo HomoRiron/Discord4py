@@ -62,3 +62,10 @@ email? string
         }
         r=requests.patch(f"{self.base}/channels/{channelid}/messages/{msgid}",headers=header,json=json)
         return r.status_code
+    def GetInvite(self,channelid):
+        header = {
+            "Authorization":self.Token
+        }
+        r=requests.get(f"{self.base}/channels/{channelid}/invites")
+        code = r.json()["code"]
+        return f"https://discord.gg/{code}"
