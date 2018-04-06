@@ -67,5 +67,5 @@ email? string
             "Authorization":self.Token
         }
         r=requests.get(f"{self.base}/channels/{channelid}/invites")
-        code = r.json()["code"]
-        return f"https://discord.gg/{code}"
+        json = r.json()
+        return json
