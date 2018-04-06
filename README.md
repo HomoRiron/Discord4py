@@ -2,7 +2,7 @@
 
 ```python
 
-client = DiscordApi(Email="hogehoge@example.com","password")
+client = DiscordApi(Email="hogehoge@example.com",Password="password")
 profile = client.Me()
 print(profile)
 
